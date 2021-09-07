@@ -7,7 +7,13 @@ import {closeInformationCardEnterprise} from '../../../store/modules/enterprise/
 
 const Index = () => {
   const enterprise = useSelector(state => state.enterprise.enterprise);
+  const user = useSelector(state => state.user.distance);
   const dispatch = useDispatch();
+
+  const {distance, duration} = user;
+
+  console.log(enterprise);
+  console.log(duration);
 
   return (
     <View
@@ -30,13 +36,13 @@ const Index = () => {
         }}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <View style={{flex: 1, marginLeft: 10}}>
-            {/* Name & Rating */}
+            {/* Enterprise Name */}
             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
               }}>
-              <Text>{enterprise.enterprise}</Text>
+              <Text>Nome da Empresa:{enterprise.enterprise}</Text>
               <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity
                   onPress={() => dispatch(closeInformationCardEnterprise())}>
@@ -45,8 +51,22 @@ const Index = () => {
               </View>
             </View>
 
-            {/* Restaurant */}
-            <Text>Qualquer um</Text>
+            <View style={{flexDirection: 'column'}}>
+              <Text>Materiais coletados:</Text>
+              {enterprise.tags.map((tag, index) => {
+                return <Text key={index}>{tag.text}</Text>;
+              })}
+            </View>
+
+            {/* Distancia e o tempo  */}
+            <View style={{flexDirection: 'column'}}>
+              {distance && duration && (
+                <>
+                  <Text>Distancia: {distance.text} </Text>
+                  <Text>Tempo: {duration.text} </Text>
+                </>
+              )}
+            </View>
           </View>
         </View>
 
@@ -61,25 +81,12 @@ const Index = () => {
             style={{
               flex: 1,
               height: 50,
-              marginRight: 10,
-
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 10,
-            }}>
-            <Text>Call</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              height: 50,
               backgroundColor: '#f5f5f5',
               alignItems: 'center',
               justifyContent: 'center',
               borderRadius: 10,
             }}>
-            <Text>Cancel</Text>
+            <Text>Entrar em contato</Text>
           </TouchableOpacity>
         </View>
       </View>

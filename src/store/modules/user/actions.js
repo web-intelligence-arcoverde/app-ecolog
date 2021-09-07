@@ -11,3 +11,7 @@ export function readUserSuccess(user) {
 export function setUserLocation(location) {
   return {type: types.SET_USER_LOCATION, location};
 }
+
+export function setDistanceForEnterprise(distance) {
+  return {type: types.GET_DISTANCE_FOR_ENTERPRISE, distance};
+}

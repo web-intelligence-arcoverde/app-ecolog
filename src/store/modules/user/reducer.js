@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     latitudeDelta: 0,
     longitudeDelta: 0,
   },
+  distance: {},
 };
 
 function user(state = INITIAL_STATE, action) {
@@ -23,6 +24,12 @@ function user(state = INITIAL_STATE, action) {
     case types.SET_USER_LOCATION: {
       return produce(state, draft => {
         draft.location = action.location;
+      });
+    }
+
+    case types.GET_DISTANCE_FOR_ENTERPRISE: {
+      return produce(state, draft => {
+        draft.distance = action.distance;
       });
     }
 

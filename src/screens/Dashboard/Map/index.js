@@ -12,6 +12,7 @@ const API_KEY = 'AIzaSyCUm61V9HWJ-gH4GPIVQ-PjySkLnUmo1X4';
 
 import {readEnterprise} from '../../../store/modules/enterprise/actions';
 import {readCompaniesRequest} from '../../../store/modules/companies/actions';
+import {setDistanceForEnterprise} from '../../../store/modules/user/actions';
 
 import Geolocation from '@react-native-community/geolocation';
 
@@ -26,32 +27,37 @@ import {setUserLocation} from '../../../store/modules/user/actions';
 const data = [
   {
     enterprise: 'Casa',
+    tags: [{text: 'Plásticos'}, {text: 'ALUMÍNIO'}, {text: 'METAIS'}],
     latitude: -8.41789,
     longitude: -37.034227,
   },
   {
     enterprise: 'EREMA',
+    tags: [{text: 'Plásticos'}, {text: 'Aluminio'}, {text: 'Metais'}],
     latitude: -8.41719,
     longitude: -37.03838,
   },
   {
     enterprise: 'Lions',
+    tags: [{text: 'Plásticos'}, {text: 'Papel'}, {text: 'Metais'}],
     latitude: 8.416129,
     longitude: -37.03647,
   },
   {
     enterprise: 'Esporte',
+    tags: [{text: 'Plásticos'}, {text: 'Aluminio'}, {text: 'Papel'}],
     latitude: -8.418841,
     longitude: -37.044705,
   },
   {
     enterprise: 'Centro',
+    tags: [{text: 'Plásticos'}, {text: 'Aluminio'}, {text: 'Papel'}],
     latitude: -8.419551,
     longitude: -37.055889,
   },
 ];
 
-const Index = ({onChangeCard}) => {
+const Index = () => {
   const mapView = useRef();
 
   const dispatch = useDispatch();
@@ -98,15 +104,16 @@ const Index = ({onChangeCard}) => {
 
     const getTravelTime = async () => {
       fetch(
-        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${address}&destinations=${dest}&key=${API_KEY}`,
+        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${address}&destinations=${dest}&key=${API_KEY}`,
       )
         .then(res => res.json())
         .then(data => {
-          console.log(data.rows[0].elements[0]);
+          dispatch(setDistanceForEnterprise(data.rows[0].elements[0]));
         });
     };
     getTravelTime();
   }, [
+    dispatch,
     enterprise.latitude,
     enterprise.longitude,
     userLocation.latitude,
