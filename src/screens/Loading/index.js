@@ -1,16 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, Animated, Easing} from 'react-native';
+import {View, StyleSheet, Animated, Easing} from 'react-native';
 
 import Logo from '../../assets/images/logo-sem-nome.png';
-
-import {Image, ContainerImage} from './style';
-
-/*
-
-  - Colocar animação na logo
-
-
-*/
 
 const Loading = ({navigation}) => {
   const redirect = () => {
@@ -19,10 +10,7 @@ const Loading = ({navigation}) => {
     }, 5000);
   };
 
-  const [rotateValue, setRotateValue] = useState(new Animated.Value(0));
-  useEffect(() => {
-    StartImageRotate();
-  }, []);
+  const [rotateValue] = useState(new Animated.Value(0));
 
   function StartImageRotate() {
     rotateValue.setValue(0);
@@ -39,6 +27,10 @@ const Loading = ({navigation}) => {
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg'],
   });
+
+  useEffect(() => {
+    StartImageRotate();
+  }, []);
 
   return (
     <View style={styles.container}>

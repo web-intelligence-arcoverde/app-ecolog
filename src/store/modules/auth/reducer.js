@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 function user(state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.ADD_CART: {
-      return produce(state, (draft) => {
+      return produce(state, draft => {
         draft.cart = [...state.cart, action.item];
       });
     }
