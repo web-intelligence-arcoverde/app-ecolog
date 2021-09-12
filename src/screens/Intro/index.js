@@ -15,7 +15,7 @@ const IntroSwiper = ({navigation}) => {
       activeDotColor={'#2a9159'}>
       <Step01 />
       <Step02 />
-      <Step03 />
+      <Step03 navigation={navigation} />
     </Swiper>
   );
 };

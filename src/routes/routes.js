@@ -6,7 +6,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {
   Loading,
   Intro,
-  Information,
   SignIn,
   SignUp,
   RecoveryAccount00,
@@ -29,12 +28,6 @@ function MyStack() {
         <Stack.Screen
           name="Intro"
           component={Intro}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="Information"
-          component={Information}
           options={{headerShown: false}}
         />
 

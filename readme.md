@@ -27,3 +27,6 @@ https://dribbble.com/shots/5469009/attachments/5469009-Homepage-Design?mode=medi
 
 - Front end
   https://dribbble.com/shots/14584432-Okolo-Bio-marketplace
+
+- Paleta de cores
+  https://flatuicolors.com/palette/defo

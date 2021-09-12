@@ -1,69 +1,58 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
-import Logo from '../../assets/images/mini-logo.png';
+import {Input} from './style';
 
-import {Input, Button, ButtonText} from './style';
+import Button from 'components/atoms/Button/Contained';
+import {Container, StyledContainer} from 'components/atoms/Container';
+import Logo from 'assets/images/mini-logo.png';
+
 const Index = ({navigation}) => {
   const goTo = name => {
     navigation.navigate(name);
   };
   return (
-    <View
-      style={{
-        backgroundColor: '#fff',
-        flex: 1,
-        justifyContent: 'center',
-      }}>
-      <View
-        style={{
-          flexDirection: 'column',
-          paddingLeft: 20,
-          paddingRight: 20,
-        }}>
-        <Text style={styles.text}>Ecolog</Text>
-      </View>
+    <Container justify="center" align="center">
+      <StyledContainer width={90}>
+        <StyledContainer>
+          <Text style={styles.text}>Ecolog</Text>
+        </StyledContainer>
 
-      <View
-        style={{flexDirection: 'column', paddingLeft: 20, paddingRight: 20}}>
-        <Input
-          placeholderTextColor="#6C6C80"
-          returnKeyType="go"
-          placeholder="Email"
+        <StyledContainer
           style={{
-            marginTop: 30,
-            fontSize: 14,
-            paddingLeft: 15,
-          }}
-        />
+            marginTop: 18,
+          }}>
+          <Input
+            placeholderTextColor="#6C6C80"
+            returnKeyType="go"
+            placeholder="Email"
+          />
+        </StyledContainer>
 
-        <Input
+        <StyledContainer
           style={{
-            marginTop: 30,
-            fontSize: 14,
-            paddingLeft: 15,
-          }}
-          placeholder="Password"
-          placeholderTextColor="#6C6C80"
-          returnKeyType="go"
-          secureTextEntry={true}
-        />
+            marginTop: 18,
+          }}>
+          <Input
+            placeholder="Password"
+            placeholderTextColor="#6C6C80"
+            returnKeyType="go"
+            secureTextEntry={true}
+          />
+        </StyledContainer>
 
-        <View
+        <StyledContainer
+          align="flex-end"
           style={{
             marginTop: 14,
-            alignItems: 'flex-end',
-            width: '100%',
           }}>
           <Text style={styles.recovery} onPress={() => goTo('RecoveryAccount')}>
             Esqueceu sua senha?
           </Text>
-        </View>
+        </StyledContainer>
 
-        <Button onPress={() => goTo('Dashboard')}>
-          <ButtonText>Entrar</ButtonText>
-        </Button>
-      </View>
+        <Button onPress={() => goTo('Dashboard')}>Entrar</Button>
+      </StyledContainer>
 
       <View
         style={{
@@ -86,7 +75,7 @@ const Index = ({navigation}) => {
         }}>
         <Image source={Logo} />
       </View>
-    </View>
+    </Container>
   );
 };
 
