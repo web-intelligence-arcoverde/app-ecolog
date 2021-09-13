@@ -1,44 +1,56 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
-
-import {Input} from './style';
+import {Text, StyleSheet, Image} from 'react-native';
 
 import Button from 'components/atoms/Button/Contained';
+import Input from 'components/atoms/Input/Default';
 import {Container, StyledContainer} from 'components/atoms/Container';
 import Logo from 'assets/images/mini-logo.png';
+
+import MainLogo from 'assets/images/logo-sem-nome.png';
+
+import {Description} from 'components/atoms/Label';
+
+import {COLORS} from '../../constants';
 
 const Index = ({navigation}) => {
   const goTo = name => {
     navigation.navigate(name);
   };
   return (
-    <Container justify="center" align="center">
-      <StyledContainer width={90}>
-        <StyledContainer>
+    <Container align="center" behavior="padding">
+      <StyledContainer
+        width={90}
+        style={{
+          marginTop: 26,
+        }}>
+        <StyledContainer justify="center" align="center">
+          <Image source={MainLogo} />
           <Text style={styles.text}>Ecolog</Text>
+          <StyledContainer
+            align="center"
+            justify="center"
+            style={{
+              marginTop: 8,
+            }}>
+            <Description>
+              Seu marketplace de coleta de resíduos, ajudamos pessoas a
+              encontrarem pontos de coleta de forma eficiente.
+            </Description>
+          </StyledContainer>
+        </StyledContainer>
+
+        <StyledContainer
+          style={{
+            marginTop: 42,
+          }}>
+          <Input text="Email" />
         </StyledContainer>
 
         <StyledContainer
           style={{
             marginTop: 18,
           }}>
-          <Input
-            placeholderTextColor="#6C6C80"
-            returnKeyType="go"
-            placeholder="Email"
-          />
-        </StyledContainer>
-
-        <StyledContainer
-          style={{
-            marginTop: 18,
-          }}>
-          <Input
-            placeholder="Password"
-            placeholderTextColor="#6C6C80"
-            returnKeyType="go"
-            secureTextEntry={true}
-          />
+          <Input text="Password" secureTextEntry={true} />
         </StyledContainer>
 
         <StyledContainer
@@ -54,27 +66,26 @@ const Index = ({navigation}) => {
         <Button onPress={() => goTo('Dashboard')}>Entrar</Button>
       </StyledContainer>
 
-      <View
+      <StyledContainer
+        direction="row"
+        justify="center"
         style={{
           marginTop: 30,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          width: '100%',
+          elevation: 1,
         }}>
         <Text style={styles.text1}>Novo por aqui?</Text>
         <Text style={styles.text2} onPress={() => goTo('SignUp')}>
           Registre-se!
         </Text>
-      </View>
-      <View
+      </StyledContainer>
+      <StyledContainer
+        align="center"
         style={{
           position: 'absolute',
           bottom: 10,
-          width: '100%',
-          alignItems: 'center',
         }}>
         <Image source={Logo} />
-      </View>
+      </StyledContainer>
     </Container>
   );
 };
@@ -82,9 +93,10 @@ const Index = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {},
   text: {
+    marginTop: 8,
     color: '#34CB79',
     fontWeight: 'bold',
-    fontSize: 54,
+    fontSize: 42,
   },
   card: {
     shadowOffset: {width: 10, height: 10},
@@ -111,7 +123,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     fontSize: 14,
     lineHeight: 16,
-    color: '#34cb79',
+    color: `${COLORS.silver}`,
     fontWeight: 'bold',
   },
 });

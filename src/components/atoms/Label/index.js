@@ -12,3 +12,10 @@ export const Description = styled.Text`
   text-align: center;
   color: ${COLORS.silver};
 `;
+
+export const Label = styled.Text`
+  font-size: ${({size}) => (size ? size : '14')}px;
+
+  color: ${({color}) => (color ? `${COLORS[color]}` : `${COLORS.black}`)};
+  font-weight: ${({weight}) => (weight ? `${weight}` : 'normal')};
+`;

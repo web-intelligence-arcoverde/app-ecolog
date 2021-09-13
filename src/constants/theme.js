@@ -6,9 +6,9 @@ export const COLORS = {
   black: '#1e1f20',
   white: '#ffffff',
   gray: '#6a6a6a',
-  blue: '#0682fe',
   green: '#34cb79',
-  silver: '#bdc3c7',
+  silver: '#aaaeb3',
+  secondaryGray: '#f0f0f5',
 };
 
 export const SIZES = {

@@ -1,24 +1,20 @@
 import React from 'react';
+import {Label} from 'components/atoms/Label';
 import styled from 'styled-components/native';
-import {COLORS} from '../../../../constants';
 
 const Container = styled.TouchableOpacity`
   width: 100%;
-  height: 38px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const Text = styled.Text`
-  color: #d8d8d8;
-  font-weight: bold;
-`;
-
-const Index = ({children}) => {
+const Index = ({children, onPress, color, weight, size}) => {
   return (
-    <Container>
-      <Text>{children}</Text>
+    <Container onPress={() => onPress()}>
+      <Label color={color} weight={weight} size={size}>
+        {children}
+      </Label>
     </Container>
   );
 };

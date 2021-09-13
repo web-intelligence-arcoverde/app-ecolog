@@ -10,7 +10,7 @@ export const StyledContainer = styled.View`
   width: ${({width}) => (width ? width : '100')}%;
 `;
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   flex-direction: column;
   background-color: ${({color}) => (color ? `${COLORS[color]}` : COLORS.white)};

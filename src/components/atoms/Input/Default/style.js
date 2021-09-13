@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
+import {COLORS} from '../../../../constants/';
 
 export const Input = styled.TextInput`
   width: 100%;
   height: 56px;
-  background: #f0f0f5;
+  background: ${COLORS.secondaryGray};
   border-radius: 8px;
   padding-left: 16px;
 `;
