@@ -11,6 +11,7 @@ import {
   RecoveryAccount00,
   RecoveryAccount01,
   RecoveryAccount02,
+  RecoveryAccount03,
   Dashboard,
 } from '../screens/';
 
@@ -58,6 +59,12 @@ function MyStack() {
         <Stack.Screen
           name="RecoveryAccount02"
           component={RecoveryAccount02}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="RecoveryAccount03"
+          component={RecoveryAccount03}
           options={{headerShown: false}}
         />
 

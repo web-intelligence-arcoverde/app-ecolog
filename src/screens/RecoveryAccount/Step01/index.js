@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 
 import {Container, StyledContainer} from 'components/atoms/Container';
 import {Label, Title} from 'components/atoms/Label';
 import Input from 'components/atoms/Input/Default';
 import Button from 'components/atoms/Button/Contained';
 import TextButton from 'components/atoms/Button/Outline';
+import OnlyTextButton from 'components/atoms/Button/Text';
 
-import {ButtonText, ButtonOutiline, ButtonOutilineText} from '../style';
+import MiniLogo from 'assets/images/mini-logo.png';
+import Logo from 'assets/images/logo-background-information.png';
 const Index = ({navigation}) => {
   const goTo = name => {
     navigation.navigate(name);
@@ -18,71 +20,59 @@ const Index = ({navigation}) => {
   };
 
   return (
-    <Container>
-      <View
-        style={{
-          flexDirection: 'column',
-          paddingLeft: 20,
-          paddingRight: 20,
-        }}>
-        <Text style={styles.text}>Recuperar conta</Text>
-        <View>
-          <Text
-            style={{
-              fontSize: 16,
-              color: '#D8D8D8',
-              marginTop: 12,
-            }}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </Text>
-        </View>
-      </View>
+    <Container justify="center" align="center">
+      <Image source={Logo} style={style.imgTop} />
 
-      <Input text="Informe o código enviado para seu email" />
+      <StyledContainer direction="column" width={90}>
+        <StyledContainer>
+          <Title size={32} color="green">
+            Verifique seu email
+          </Title>
+        </StyledContainer>
 
-      <Button onPress={() => goTo('RecoveryAccount02')}>
-        Verificar código
-      </Button>
+        <StyledContainer style={{marginTop: 22}}>
+          <Label color="silver" size={16}>
+            Por favor insira o código de 4 dígitos enviado para o seu email
+          </Label>
+        </StyledContainer>
 
-      <TextButton onPress={() => goBack()}>Voltar</TextButton>
+        <StyledContainer style={style.distance}>
+          <Input text="Informe o código enviado para seu email" />
+        </StyledContainer>
+
+        <StyledContainer justify="flex-end" align="flex-end">
+          <StyledContainer style={{marginTop: 6}} width={35}>
+            <OnlyTextButton color="green" onPress={() => console.log('Lucas')}>
+              Reenviar o código
+            </OnlyTextButton>
+          </StyledContainer>
+        </StyledContainer>
+
+        <Button onPress={() => goTo('RecoveryAccount02')}>
+          Verificar código
+        </Button>
+        <StyledContainer style={style.distance}>
+          <TextButton onPress={() => goBack()} color="green" weight="bold">
+            Voltar
+          </TextButton>
+        </StyledContainer>
+      </StyledContainer>
+
+      <StyledContainer align="center" style={style.imgFooter}>
+        <Image source={MiniLogo} />
+      </StyledContainer>
     </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
-  text: {
-    color: '#34CB79',
-    fontWeight: 'bold',
-    fontSize: 34,
+const style = StyleSheet.create({
+  distance: {
+    marginTop: 22,
   },
-  card: {
-    shadowOffset: {width: 10, height: 10},
-    shadowColor: 'black',
-    shadowOpacity: 1,
-    elevation: 3,
-    // background color must be set
-    backgroundColor: '#0000', // invisible col
-  },
-  recovery: {
-    fontFamily: 'Roboto',
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 14,
-    lineHeight: 16,
-    color: '#34cb79',
-  },
-  text1: {
-    fontSize: 14,
-    lineHeight: 16,
-    color: '#34cb79',
-  },
-  text2: {
-    marginLeft: 4,
-    fontSize: 14,
-    lineHeight: 16,
-    color: '#34cb79',
-    fontWeight: 'bold',
+  imgTop: {position: 'absolute', top: -60, left: 0},
+  imgFooter: {
+    position: 'absolute',
+    bottom: 10,
   },
 });
 

@@ -1,11 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 
 import {Container, StyledContainer} from 'components/atoms/Container';
 import {Label, Title} from 'components/atoms/Label';
-import Input from 'components/atoms/Input/Default';
 import Button from 'components/atoms/Button/Contained';
-import TextButton from 'components/atoms/Button/Outline';
 
 import Logo from 'assets/images/logo-background-information.png';
 import MiniLogo from 'assets/images/mini-logo.png';
@@ -15,40 +13,21 @@ const Index = ({navigation}) => {
     navigation.navigate(name);
   };
 
-  const goBack = () => {
-    navigation.goBack();
-  };
-
   return (
     <Container justify="center" align="center">
       <Image source={Logo} style={{position: 'absolute', top: -90, left: 0}} />
       <StyledContainer direction="column" width={90}>
         <Title size={32} color="green">
-          Redefinir senha
+          Senha redefinida com sucesso
         </Title>
 
         <StyledContainer style={style.distance}>
           <Label color="silver" size={16}>
-            Certifique-se de que sua nova senha deve ser diferente das senhas
-            usadas anteriormente.
+            Incrível! você atualizou sua senha com sucesso
           </Label>
         </StyledContainer>
 
-        <StyledContainer style={style.distance}>
-          <Input text="Informe a sua nova senha" />
-        </StyledContainer>
-
-        <StyledContainer style={style.distance}>
-          <Input text="Repita a senha" />
-        </StyledContainer>
-
-        <Button onPress={() => goTo('RecoveryAccount03')}>Alterar senha</Button>
-
-        <StyledContainer style={style.distance}>
-          <TextButton onPress={() => goBack()} color="green" weight="bold">
-            Voltar
-          </TextButton>
-        </StyledContainer>
+        <Button onPress={() => goTo('SignIn')}>Volte para fazer login</Button>
       </StyledContainer>
 
       <StyledContainer
