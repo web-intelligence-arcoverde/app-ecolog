@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-import {
-  Input,
-  Button,
-  ButtonText,
-  ButtonOutiline,
-  ButtonOutilineText,
-} from '../style';
+import {Container, StyledContainer} from 'components/atoms/Container';
+import {Label, Title} from 'components/atoms/Label';
+import Input from 'components/atoms/Input/Default';
+import Button from 'components/atoms/Button/Contained';
+import TextButton from 'components/atoms/Button/Outline';
+
+import {ButtonText, ButtonOutiline, ButtonOutilineText} from '../style';
 const Index = ({navigation}) => {
   const goTo = name => {
     navigation.navigate(name);
@@ -18,12 +18,7 @@ const Index = ({navigation}) => {
   };
 
   return (
-    <View
-      style={{
-        backgroundColor: '#fff',
-        flex: 1,
-        justifyContent: 'center',
-      }}>
+    <Container>
       <View
         style={{
           flexDirection: 'column',
@@ -43,36 +38,14 @@ const Index = ({navigation}) => {
         </View>
       </View>
 
-      <View
-        style={{flexDirection: 'column', paddingLeft: 20, paddingRight: 20}}>
-        <Input
-          placeholderTextColor="#6C6C80"
-          returnKeyType="go"
-          placeholder="Informe o código enviado para seu email"
-          style={{
-            marginTop: 30,
-            fontSize: 14,
-            paddingLeft: 15,
-          }}
-        />
+      <Input text="Informe o código enviado para seu email" />
 
-        <View
-          style={{
-            marginTop: 14,
-            alignItems: 'flex-end',
-            width: '100%',
-          }}
-        />
+      <Button onPress={() => goTo('RecoveryAccount02')}>
+        Verificar código
+      </Button>
 
-        <Button onPress={() => goTo('RecoveryAccount02')}>
-          <ButtonText>Verificar código</ButtonText>
-        </Button>
-
-        <ButtonOutiline onPress={() => goBack()}>
-          <ButtonOutilineText>Voltar</ButtonOutilineText>
-        </ButtonOutiline>
-      </View>
-    </View>
+      <TextButton onPress={() => goBack()}>Voltar</TextButton>
+    </Container>
   );
 };
 

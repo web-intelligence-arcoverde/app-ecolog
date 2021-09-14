@@ -2,9 +2,9 @@ import styled from 'styled-components/native';
 import {COLORS} from '../../../constants/theme';
 
 export const Title = styled.Text`
-  font-size: 22px;
+  font-size: ${({size}) => (size ? size : '22')}px;
   font-weight: bold;
-  color: ${COLORS.black};
+  color: ${({color}) => (color ? `${COLORS[color]}` : `${COLORS.black}`)};
 `;
 
 export const Description = styled.Text`
@@ -15,7 +15,6 @@ export const Description = styled.Text`
 
 export const Label = styled.Text`
   font-size: ${({size}) => (size ? size : '14')}px;
-
   color: ${({color}) => (color ? `${COLORS[color]}` : `${COLORS.black}`)};
   font-weight: ${({weight}) => (weight ? `${weight}` : 'normal')};
 `;
