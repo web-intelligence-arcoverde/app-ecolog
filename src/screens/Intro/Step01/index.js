@@ -3,9 +3,12 @@ import React from 'react';
 import {Image, StyleSheet} from 'react-native';
 
 import {Container, StyledContainer} from 'components/atoms/Container';
+
 import {Title, Description, Label} from 'components/atoms/Label';
+
 import Button from 'components/atoms/Button/Contained';
 import TextButton from 'components/atoms/Button/Text';
+
 import People from 'assets/images/people-recycle.png';
 
 const Index = ({navigation}) => {
@@ -31,16 +34,16 @@ const Index = ({navigation}) => {
       </StyledContainer>
 
       <StyledContainer width={90}>
-        <Button>Pular</Button>
+        <Button onPress={() => goTo('SignIn')}>Pular</Button>
       </StyledContainer>
 
       <StyledContainer direction="row" justify="center" style={style.distance}>
         <Label color="silver">Novo por aqui?</Label>
-        <StyledContainer
-          width={20}
-          style={style.signUp}
-          onPress={() => goTo('SignUp')}>
-          <TextButton color="green" weight="bold">
+        <StyledContainer width={20} style={style.signUp}>
+          <TextButton
+            color="green"
+            weight="bold"
+            onPress={() => goTo('SignUp')}>
             Registre-se!
           </TextButton>
         </StyledContainer>

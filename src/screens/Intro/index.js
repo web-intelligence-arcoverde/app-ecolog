@@ -13,8 +13,8 @@ const IntroSwiper = ({navigation}) => {
       showsButtons={false}
       dotColor={'#34CB79'}
       activeDotColor={'#2a9159'}>
-      <Step01 />
-      <Step02 />
+      <Step01 navigation={navigation} />
+      <Step02 navigation={navigation} />
       <Step03 navigation={navigation} />
     </Swiper>
   );
