@@ -44,7 +44,7 @@ const Index = ({navigation}) => {
 
 const style = StyleSheet.create({
   distance: {
-    marginTop: 22,
+    marginTop: 6,
   },
 });
 

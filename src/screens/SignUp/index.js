@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
-
-import {
-  Input,
-  Button,
-  ButtonText,
-  ButtonOutiline,
-  ButtonOutilineText,
-} from './style';
+import {View, StyleSheet, Image} from 'react-native';
 
 import {Picker} from '@react-native-picker/picker';
+
+import {Container, StyledContainer} from 'components/atoms/Container';
+import {Label, Title} from 'components/atoms/Label';
+import Input from 'components/atoms/Input/Default';
+import Button from 'components/atoms/Button/Contained';
+import TextButton from 'components/atoms/Button/Outline';
+
+import MiniLogo from 'assets/images/mini-logo.png';
 
 const Index = ({navigation}) => {
   const [nome, setNome] = useState('');
@@ -27,131 +27,40 @@ const Index = ({navigation}) => {
   };
 
   return (
-    <ScrollView
-      style={{
-        backgroundColor: '#fff',
-        flex: 1,
-      }}>
-      <View
-        style={{
-          justifyContent: 'center',
-          paddingBottom: 40,
-        }}>
+    <Container justify="center" align="center">
+      <StyledContainer width={90}>
         <View
           style={{
-            marginTop: 60,
-            flexDirection: 'column',
-            paddingLeft: 20,
-            paddingRight: 20,
+            height: 56,
+            marginTop: 80,
+            borderRadius: 8,
+            justifyContent: 'center',
+            width: '100%',
+            backgroundColor: '#f6f6f6',
           }}>
-          <Text style={styles.text}>Criar conta</Text>
-
-          <View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#D8D8D8',
-                marginTop: 12,
-              }}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            </Text>
-          </View>
-        </View>
-
-        <View
-          style={{flexDirection: 'column', paddingLeft: 20, paddingRight: 20}}>
-          <Input
-            placeholderTextColor="#6C6C80"
-            returnKeyType="go"
-            placeholder="Nome"
+          <Picker
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedLanguage(itemValue)
+            }
             style={{
-              marginTop: 30,
-              fontSize: 14,
-              paddingLeft: 15,
-            }}
-          />
-
-          <Input
-            style={{
-              marginTop: 30,
-              fontSize: 14,
-              paddingLeft: 15,
-            }}
-            placeholder="Email"
-            placeholderTextColor="#6C6C80"
-            returnKeyType="go"
-          />
-
-          <Input
-            style={{
-              marginTop: 30,
-              fontSize: 14,
-              paddingLeft: 15,
-            }}
-            placeholder="Password"
-            placeholderTextColor="#6C6C80"
-            returnKeyType="go"
-            secureTextEntry={true}
-          />
-
-          <View
-            style={{
-              height: 56,
-              marginTop: 30,
-              backgroundColor: '#f0f0f5',
-              borderRadius: 8,
-              justifyContent: 'center',
+              height: 42,
             }}>
-            <Picker
-              selectedValue={selectedLanguage}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedLanguage(itemValue)
-              }
-              style={{
-                height: 42,
-                color: '#6C6C80',
-              }}>
-              <Picker.Item label="Coletor" value="coletor" />
-              <Picker.Item label="Empresa" value="empresa" />
-            </Picker>
-          </View>
-
-          {selectedLanguage === 'empresa' ? (
-            <>
-              <Input
-                style={{
-                  marginTop: 30,
-                  fontSize: 14,
-                  paddingLeft: 15,
-                }}
-                placeholder="Nome da empresa"
-                placeholderTextColor="#6C6C80"
-              />
-
-              <Input
-                style={{
-                  marginTop: 30,
-                  fontSize: 14,
-                  paddingLeft: 15,
-                }}
-                placeholder="CNPJ"
-                placeholderTextColor="#6C6C80"
-              />
-            </>
-          ) : (
-            <></>
-          )}
-
-          <Button>
-            <ButtonText>Criar</ButtonText>
-          </Button>
-
-          <ButtonOutiline onPress={() => goBack()}>
-            <ButtonOutilineText>Voltar</ButtonOutilineText>
-          </ButtonOutiline>
+            <Picker.Item label="Coletor" value="coletor" />
+            <Picker.Item label="Empresa" value="empresa" />
+          </Picker>
         </View>
-      </View>
-    </ScrollView>
+      </StyledContainer>
+
+      <StyledContainer
+        align="center"
+        style={{
+          position: 'absolute',
+          bottom: 10,
+        }}>
+        <Image source={MiniLogo} />
+      </StyledContainer>
+    </Container>
   );
 };
 
