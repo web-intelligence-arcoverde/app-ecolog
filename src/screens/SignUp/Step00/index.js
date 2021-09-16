@@ -19,6 +19,10 @@ const Index = ({navigation}) => {
     });
   };
 
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <Container align="center" justify="center">
       <StyledContainer width={90}>
@@ -55,7 +59,7 @@ const Index = ({navigation}) => {
         </StyledContainer>
 
         <StyledContainer style={{marginTop: 20}}>
-          <TextButton color="green" weight="bold">
+          <TextButton color="green" weight="bold" onPress={() => goBack()}>
             Voltar
           </TextButton>
         </StyledContainer>
