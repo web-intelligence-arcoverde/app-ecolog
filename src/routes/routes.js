@@ -7,7 +7,10 @@ import {
   Loading,
   Intro,
   SignIn,
-  SignUp,
+  SignUp00,
+  SignUp01,
+  SignUp02,
+  SignUp03,
   RecoveryAccount00,
   RecoveryAccount01,
   RecoveryAccount02,
@@ -40,7 +43,24 @@ function MyStack() {
 
         <Stack.Screen
           name="SignUp"
-          component={SignUp}
+          component={SignUp00}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="SignUp01"
+          component={SignUp01}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SignUp02"
+          component={SignUp02}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="SignUp03"
+          component={SignUp03}
           options={{headerShown: false}}
         />
 

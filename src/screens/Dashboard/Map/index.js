@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import MapView, {Marker} from 'react-native-maps';
 
@@ -7,6 +7,8 @@ import {Dimensions} from 'react-native';
 import Logo from '../../../assets/images/logo-sem-nome.png';
 
 import MapViewDirections from 'react-native-maps-directions';
+
+import LoadingMap from '../../LoadingMap';
 
 const API_KEY = 'AIzaSyCUm61V9HWJ-gH4GPIVQ-PjySkLnUmo1X4';
 
@@ -73,6 +75,7 @@ const Index = () => {
           longitudeDelta: LONGITUDE_DELTA,
         }),
       );
+      setLoading(false);
     }).catch(err => {
       console.log(err);
     });
@@ -88,7 +91,9 @@ const Index = () => {
 
   const companies = useSelector(state => state.companies.companies);
 
-  console.log(companies);
+  const [loading, setLoading] = useState(true);
+
+  console.log(userLocation);
 
   const selectEnterprise = item => {
     dispatch(readEnterprise(item));
@@ -120,17 +125,16 @@ const Index = () => {
     userLocation.longitude,
   ]);
 
+  if (loading) {
+    return <LoadingMap />;
+  }
+
   return (
     <MapView
       ref={mapView}
       style={{flex: 1}}
       showsUserLocation={true}
-      initialRegion={{
-        latitude: -8.41955,
-        longitude: -37.0652,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
-      }}>
+      initialRegion={userLocation}>
       {data.map((dev, index) => (
         <Marker
           onPress={() => {

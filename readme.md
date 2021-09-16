@@ -30,3 +30,10 @@ https://dribbble.com/shots/5469009/attachments/5469009-Homepage-Design?mode=medi
 
 - Paleta de cores
   https://flatuicolors.com/palette/defo
+
+- Sign Up
+  https://jchristyliu.com/reguide
+  https://kedarjoyner.com/werecycle-mobile-app
+  https://kedarjoyner.com/werecycle-mobile-app
+  https://www.behance.net/gallery/125912775/Eat-Sign-In-Sign-Up-Screens-Free-Download?tracking_source=search_projects_recommended%7Cforgot%20password
+  https://www.behance.net/gallery/127310849/Forgot-Password?tracking_source=search_projects_recommended%7Cforgot%20password

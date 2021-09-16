@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
 import {Container, StyledContainer} from 'components/atoms/Container';
 import {Label, Title} from 'components/atoms/Label';
@@ -10,9 +10,7 @@ import TextButton from 'components/atoms/Button/Outline';
 import Logo from 'assets/images/logo-background-information.png';
 import MiniLogo from 'assets/images/mini-logo.png';
 
-const Index = ({navigation, route}) => {
-  const {type} = route.params;
-
+const Index = ({navigation}) => {
   const goTo = name => {
     navigation.navigate(name);
   };
@@ -23,37 +21,30 @@ const Index = ({navigation, route}) => {
 
   return (
     <Container justify="center" align="center">
-      <Image source={Logo} style={{position: 'absolute', top: -170, left: 0}} />
+      <Image source={Logo} style={{position: 'absolute', top: -90, left: 0}} />
       <StyledContainer direction="column" width={90}>
-        <StyledContainer>
-          <Title size={32} color="green">
-            Insira as informações
-          </Title>
-        </StyledContainer>
-        <StyledContainer style={{marginTop: 12}}>
+        <Title size={32} color="green">
+          Definir senha
+        </Title>
+
+        <StyledContainer style={style.distance}>
           <Label color="silver" size={16}>
-            Insira as informações
+            Certifique-se de que as senhas sejam iguais.
           </Label>
         </StyledContainer>
 
         <StyledContainer style={style.distance}>
-          <Input text="CNPJ" />
+          <Input text="Informe a sua nova senha" />
         </StyledContainer>
 
         <StyledContainer style={style.distance}>
-          <Input text="Nome da empresa" />
+          <Input text="Repita a senha" />
         </StyledContainer>
+
+        <Button onPress={() => goTo('SignUp03')}>Finalizar</Button>
 
         <StyledContainer style={style.distance}>
-          <Input text="Informe seu email" />
-        </StyledContainer>
-
-        <StyledContainer>
-          <Button onPress={() => goTo('SignUp02')}>Prosseguir</Button>
-        </StyledContainer>
-
-        <StyledContainer style={style.distance}>
-          <TextButton color="green" weight="bold" onPress={() => goBack()}>
+          <TextButton onPress={() => goBack()} color="green" weight="bold">
             Voltar
           </TextButton>
         </StyledContainer>
