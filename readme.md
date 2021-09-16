@@ -40,3 +40,5 @@ https://dribbble.com/shots/5469009/attachments/5469009-Homepage-Design?mode=medi
 
   - Alterar Nome do App
     https://www.npmjs.com/package/react-native-rename
+  - Alterar Icon do App
+    https://www.youtube.com/watch?v=P-b3N8VCKTA
