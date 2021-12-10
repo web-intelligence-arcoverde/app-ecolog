@@ -1,17 +1,23 @@
 import types from './types';
-
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  cart: [],
-  total: 0,
+  user: {},
+  isLoading: false,
+  token: '',
 };
 
 function user(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case types.ADD_CART: {
+    case types.SIGN_IN_REQUEST: {
       return produce(state, draft => {
-        draft.cart = [...state.cart, action.item];
+        draft.isLoading = true;
+      });
+    }
+    case types.SIGN_IN_SUCCESS: {
+      return produce(state, draft => {
+        draft.user = action.user;
+        draft.isLoading = false;
       });
     }
 

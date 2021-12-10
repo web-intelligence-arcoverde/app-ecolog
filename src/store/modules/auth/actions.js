@@ -1,5 +1,5 @@
 import types from './types';
 
-export function addItemCart(item) {
-  return {type: types.ADD_CART, item};
+export function readSignInRequest(user) {
+  return {type: types.SIGN_IN_REQUEST, user};
 }

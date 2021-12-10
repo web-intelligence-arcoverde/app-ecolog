@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, StyleSheet, Image} from 'react-native';
 
 import Button from 'components/atoms/Button/Contained';
@@ -10,12 +10,45 @@ import MainLogo from 'assets/images/logo-sem-nome.png';
 
 import {Description} from 'components/atoms/Label';
 
+import {readSignInRequest} from '../../store/modules/auth/actions';
+import {useDispatch} from 'react-redux';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+
+import {messages} from '../../validations/message';
 import {COLORS} from '../../constants';
 
+import * as yup from 'yup';
+
+const schema = yup
+  .object({
+    email: yup.string().email(messages.email).required(messages.required),
+    password: yup
+      .string()
+      .min(6, messages.min6)
+      .max(20, messages.max20)
+      .required(messages.required),
+  })
+  .required();
+
 const Index = ({navigation}) => {
+  const dispatch = useDispatch();
+
+  const {setValue, handleSubmit, errors, register} = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  useEffect(() => {
+    register('email');
+    register('password');
+  }, [register]);
+
   const goTo = name => {
     navigation.navigate(name);
   };
+
+  const signInRequest = data => dispatch(readSignInRequest(data));
+
   return (
     <Container align="center" behavior="padding">
       <StyledContainer
@@ -43,14 +76,23 @@ const Index = ({navigation}) => {
           style={{
             marginTop: 42,
           }}>
-          <Input text="Email" />
+          <Input
+            text="Email"
+            onChangeText={text => setValue('email', text)}
+            error={errors?.email}
+          />
         </StyledContainer>
 
         <StyledContainer
           style={{
             marginTop: 18,
           }}>
-          <Input text="Password" secureTextEntry={true} />
+          <Input
+            text="Password"
+            secureTextEntry={true}
+            onChangeText={text => setValue('password', text)}
+            error={errors?.password}
+          />
         </StyledContainer>
 
         <StyledContainer
@@ -63,14 +105,14 @@ const Index = ({navigation}) => {
           </Text>
         </StyledContainer>
 
-        <Button onPress={() => goTo('Dashboard')}>Entrar</Button>
+        <Button onPress={handleSubmit(signInRequest)}>Entrar</Button>
       </StyledContainer>
 
       <StyledContainer
         direction="row"
         justify="center"
         style={{
-          marginTop: 30,
+          marginTop: 20,
           elevation: 1,
         }}>
         <Text style={styles.text1}>Novo por aqui?</Text>
@@ -103,8 +145,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 1,
     elevation: 3,
-    // background color must be set
-    backgroundColor: '#0000', // invisible col
+    backgroundColor: '#0000',
   },
   recovery: {
     fontFamily: 'Roboto',

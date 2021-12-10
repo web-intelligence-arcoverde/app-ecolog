@@ -9,6 +9,7 @@ export const COLORS = {
   green: '#34cb79',
   silver: '#aaaeb3',
   secondaryGray: '#f0f0f5',
+  error: '#e15848',
 };
 
 export const SIZES = {

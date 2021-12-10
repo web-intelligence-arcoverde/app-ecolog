@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Image} from 'react-native';
 
 import {Container, StyledContainer} from 'components/atoms/Container';
 import {Label, Title} from 'components/atoms/Label';
@@ -10,7 +10,17 @@ import TextButton from 'components/atoms/Button/Outline';
 import Logo from 'assets/images/logo-background-information.png';
 import MiniLogo from 'assets/images/mini-logo.png';
 
-const Index = ({navigation}) => {
+import {createUserRequest} from '../../../store/modules/user/actions';
+import {useDispatch} from 'react-redux';
+
+const Index = ({navigation, route}) => {
+  const dispatch = useDispatch();
+  const {user} = route.params;
+  const [validate, setValidate] = useState(false);
+
+  const [password, setPassword] = useState('');
+  const [confirmationPassword, setConfirmationPassword] = useState('');
+
   const goTo = name => {
     navigation.navigate(name);
   };
@@ -18,6 +28,26 @@ const Index = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
   };
+
+  const createUser = () => {
+    const newUser = {
+      ...user,
+      password,
+      confirmationPassword,
+    };
+    dispatch(createUserRequest(newUser));
+  };
+
+  useEffect(() => {
+    if (
+      (password.length && confirmationPassword.length) > 0 &&
+      password === confirmationPassword
+    ) {
+      setValidate(true);
+    } else {
+      setValidate(false);
+    }
+  }, [password, confirmationPassword]);
 
   return (
     <Container justify="center" align="center">
@@ -34,14 +64,29 @@ const Index = ({navigation}) => {
         </StyledContainer>
 
         <StyledContainer style={style.distance}>
-          <Input text="Informe a sua nova senha" />
+          <Input
+            text="Informe a sua senha"
+            value={password}
+            secureTextEntry={true}
+            setValue={setPassword}
+          />
         </StyledContainer>
 
         <StyledContainer style={style.distance}>
-          <Input text="Repita a senha" />
+          <Input
+            text="Confirmacao de senha"
+            value={confirmationPassword}
+            secureTextEntry={true}
+            setValue={setConfirmationPassword}
+          />
         </StyledContainer>
 
-        <Button onPress={() => goTo('SignUp03')}>Finalizar</Button>
+        <Button
+          onPress={() => goTo('SignUp03')}
+          disabled={!validate}
+          background={!validate && 'silver'}>
+          Finalizar
+        </Button>
 
         <StyledContainer style={style.distance}>
           <TextButton onPress={() => goBack()} color="green" weight="bold">

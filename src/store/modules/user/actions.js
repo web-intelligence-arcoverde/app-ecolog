@@ -15,3 +15,11 @@ export function setUserLocation(location) {
 export function setDistanceForEnterprise(distance) {
   return {type: types.GET_DISTANCE_FOR_ENTERPRISE, distance};
 }
+
+export function createUserRequest(user) {
+  return {type: types.CREATE_USER_REQUEST, user};
+}
+
+export function createUserSuccess(user) {
+  return {type: types.CREATE_USER_SUCCESS, user};
+}

@@ -1,13 +1,17 @@
 import React from 'react';
-import {Input} from './style';
+import {Input, Container, TextError} from './style';
 
-const Index = ({text, secureTextEntry}) => {
+const Index = ({text, secureTextEntry, error, ...inputProps}) => {
   return (
-    <Input
-      placeholderTextColor="#6C6C80"
-      placeholder={text}
-      secureTextEntry={secureTextEntry}
-    />
+    <Container>
+      <Input
+        placeholderTextColor="#6C6C80"
+        placeholder={text}
+        secureTextEntry={secureTextEntry}
+        {...inputProps}
+      />
+      {!!error && <TextError>{error.message}</TextError>}
+    </Container>
   );
 };
 

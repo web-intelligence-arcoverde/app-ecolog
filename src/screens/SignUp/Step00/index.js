@@ -50,7 +50,7 @@ const Index = ({navigation}) => {
           />
 
           <CardTypeUser
-            onPress={() => goTo('collect')}
+            onPress={() => goTo('collector')}
             image={Collect}
             type="Catador de reciclagem"
             description="Ver pontos de coleta proximos a sua casa e marca entregas de produtos

@@ -10,13 +10,15 @@ import MapViewDirections from 'react-native-maps-directions';
 
 import LoadingMap from '../../LoadingMap';
 
-const API_KEY = 'AIzaSyCUm61V9HWJ-gH4GPIVQ-PjySkLnUmo1X4';
+const API_KEY = 'AIzaSyBlI63zHzzdgiwU6O00ezQSsAfrJe-jWbs';
 
 import {readEnterprise} from '../../../store/modules/enterprise/actions';
 import {readCompaniesRequest} from '../../../store/modules/companies/actions';
 import {setDistanceForEnterprise} from '../../../store/modules/user/actions';
 
 import Geolocation from '@react-native-community/geolocation';
+
+import {Image} from 'react-native';
 
 const {height, width} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -25,6 +27,8 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 import {useDispatch, useSelector} from 'react-redux';
 import {setUserLocation} from '../../../store/modules/user/actions';
+
+import {COLORS} from '../../../constants/theme';
 
 const data = [
   {
@@ -93,8 +97,6 @@ const Index = () => {
 
   const [loading, setLoading] = useState(true);
 
-  console.log(userLocation);
-
   const selectEnterprise = item => {
     dispatch(readEnterprise(item));
   };
@@ -125,9 +127,16 @@ const Index = () => {
     userLocation.longitude,
   ]);
 
+  const DESTINATION = {
+    latitude: -8.418841,
+    longitude: -37.055889,
+  };
+
   if (loading) {
     return <LoadingMap />;
   }
+
+  console.log(enterprise.latitude);
 
   return (
     <MapView
@@ -141,28 +150,27 @@ const Index = () => {
             selectEnterprise(dev);
           }}
           key={index}
-          image={Logo}
           coordinate={{
             latitude: Number(dev.latitude),
             longitude: Number(dev.longitude),
-          }}
-        />
+          }}>
+          <Image source={Logo} style={{height: 22, width: 22}} />
+        </Marker>
       ))}
-      {enterprise.longitude && (
-        <MapViewDirections
-          origin={{
-            latitude: Number(userLocation.latitude),
-            longitude: Number(userLocation.longitude),
-          }}
-          strokeWidth={3}
-          strokeColor="#2FB86E"
-          destination={{
-            latitude: Number(enterprise.latitude),
-            longitude: Number(enterprise.longitude),
-          }}
-          apikey={API_KEY}
-        />
-      )}
+
+      <MapViewDirections
+        origin={{
+          latitude: Number(userLocation.latitude),
+          longitude: Number(userLocation.longitude),
+        }}
+        destination={{
+          latitude: enterprise.latitude,
+          longitude: enterprise.longitude,
+        }}
+        strokeWidth={5}
+        strokeColor={COLORS.green}
+        apikey={API_KEY}
+      />
     </MapView>
   );
 };
