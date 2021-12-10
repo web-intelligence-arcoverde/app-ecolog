@@ -47,7 +47,7 @@ const Index = ({navigation}) => {
     navigation.navigate(name);
   };
 
-  const signInRequest = data => dispatch(readSignInRequest(data));
+  const signInRequest = data => dispatch(readSignInRequest({data, navigation}));
 
   return (
     <Container align="center" behavior="padding">

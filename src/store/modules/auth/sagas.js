@@ -2,18 +2,22 @@ import {takeLatest, all, put, call} from 'redux-saga/effects';
 
 import types from './types';
 
-const prefixUser = '/api/v1/users/';
+const prefixUser = '/api/v1/users';
 
 import api from '../../../services/api';
 
+import store from '../../index';
+
 export function* signInRequest({user}) {
   try {
-    const {email, password} = user;
-    const {data} = yield call(api.post, `${prefixUser}signin`, {
-      email,
-      password,
+    const {navigation} = user;
+
+    const {data} = yield call(api.post, `${prefixUser}/signin`, {
+      email: user.data.email,
+      password: user.data.password,
     });
-    console.log(data.user, data.token);
+    console.log(data);
+    navigation.navigate('Dashboard');
   } catch (error) {
     console.log(error);
   }
