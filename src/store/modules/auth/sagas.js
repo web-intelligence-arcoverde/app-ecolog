@@ -6,8 +6,6 @@ const prefixUser = '/api/v1/users';
 
 import api from '../../../services/api';
 
-import store from '../../index';
-
 export function* signInRequest({user}) {
   try {
     const {navigation} = user;
