@@ -3,15 +3,14 @@ import {Label} from 'components/atoms/Label';
 import styled from 'styled-components/native';
 
 const Container = styled.TouchableOpacity`
-  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const Index = ({children, onPress, color, weight, size}) => {
+const Index = ({children, onPress, color, weight, size, props}) => {
   return (
-    <Container onPress={() => onPress()}>
+    <Container onPress={() => onPress()} {...props}>
       <Label color={color} weight={weight} size={size}>
         {children}
       </Label>
