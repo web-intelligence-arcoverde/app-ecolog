@@ -1,11 +1,12 @@
 import React from 'react';
 import {Input, Container, TextError} from './style';
+import {COLORS} from '../../../../constants';
 
 const Index = ({text, secureTextEntry, error, ...inputProps}) => {
   return (
     <Container>
       <Input
-        placeholderTextColor="#6C6C80"
+        placeholderTextColor={COLORS.silver}
         placeholder={text}
         secureTextEntry={secureTextEntry}
         {...inputProps}

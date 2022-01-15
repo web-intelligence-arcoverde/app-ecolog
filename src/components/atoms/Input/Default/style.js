@@ -12,7 +12,7 @@ export const Input = styled.TextInput`
   width: 100%;
   height: 56px;
   background: ${COLORS.secondaryGray};
-  color: ${COLORS.silver};
+  color: #6c6c80;
   border-radius: 8px;
   padding-left: 16px;
 `;

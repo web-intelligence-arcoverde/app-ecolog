@@ -4,38 +4,54 @@ import {StyleSheet, Image} from 'react-native';
 import {Container, StyledContainer} from 'components/atoms/Container';
 import {Label, Title} from 'components/atoms/Label';
 import Input from 'components/atoms/Input/Default';
+import MaskedInput from 'components/atoms/Input/Masked';
+
 import Button from 'components/atoms/Button/Contained';
 import TextButton from 'components/atoms/Button/Outline';
 
 import Logo from 'assets/images/logo-background-information.png';
 import MiniLogo from 'assets/images/mini-logo.png';
 
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {messages} from '../../../validations/message';
+import * as yup from 'yup';
+
+const schema = yup
+  .object({
+    cpf: yup.string().required(messages.required),
+    name: yup.string().required(messages.required),
+    email: yup.string().email(messages.email).required(messages.required),
+  })
+  .required();
+
 const Index = ({navigation, route}) => {
-  const [validate, setValidate] = useState(false);
-  const [cpf, setCpf] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
   const {type} = route.params;
 
-  const goTo = name => {
-    const user = {cpf, fullName, email, type};
+  const {setValue, handleSubmit, errors, register} = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      cpf: '',
+      name: '',
+      email: '',
+    },
+  });
 
-    navigation.navigate(name, {
-      user,
-    });
+  const goTo = data => {
+    console.log('aqui');
   };
 
   useEffect(() => {
-    if ((cpf.length && fullName.length && email.length && type.length) > 0) {
-      setValidate(true);
-    } else {
-      setValidate(false);
-    }
-  }, [cpf, fullName, email, type]);
+    register('cpf');
+    register('name');
+    register('email');
+  }, [register]);
 
   const goBack = () => {
     navigation.goBack();
   };
+
+  console.log('errors', errors);
 
   return (
     <Container justify="center" align="center">
@@ -53,28 +69,33 @@ const Index = ({navigation, route}) => {
         </StyledContainer>
 
         <StyledContainer style={style.distance}>
-          <Input text="CNPJ" value={cpf} setValue={setCpf} />
-        </StyledContainer>
-
-        <StyledContainer style={style.distance}>
-          <Input
-            text="Nome da empresa"
-            value={fullName}
-            setValue={setFullName}
+          <MaskedInput
+            text="CPF/CNPJ"
+            onChangeText={text => setValue('cpf', text)}
+            error={errors?.cpf}
+            type="cpf"
           />
         </StyledContainer>
 
         <StyledContainer style={style.distance}>
-          <Input text="Informe seu email" value={email} setValue={setEmail} />
+          <Input
+            style={{marginTop: 10}}
+            text={type !== 'enterprise' ? 'Nome' : 'Nome da empresa'}
+            onChangeText={text => setValue('name', text)}
+            error={errors?.name}
+          />
+        </StyledContainer>
+
+        <StyledContainer style={style.distance}>
+          <Input
+            text="Informe seu email"
+            onChangeText={text => setValue('email', text)}
+            error={errors?.email}
+          />
         </StyledContainer>
 
         <StyledContainer>
-          <Button
-            onPress={() => goTo('SignUp02')}
-            disabled={!validate}
-            background={!validate && 'silver'}>
-            Prosseguir
-          </Button>
+          <Button onPress={handleSubmit(goTo)}>Prosseguir</Button>
         </StyledContainer>
 
         <StyledContainer style={style.distance}>
