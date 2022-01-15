@@ -51,7 +51,9 @@ const Index = ({navigation}) => {
     navigation.navigate(name);
   };
 
-  const signInRequest = data => dispatch(readSignInRequest({data, navigation}));
+  const signInRequest = data => {
+    navigation.navigate('Dashboard');
+  };
 
   return (
     <KeyboardAvoidingView
