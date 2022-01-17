@@ -12,9 +12,6 @@ const Index = () => {
 
   const {distance, duration} = user;
 
-  console.log(enterprise);
-  console.log(duration);
-
   return (
     <View
       style={{

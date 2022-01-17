@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {Image, StyleSheet} from 'react-native';
 
@@ -41,7 +42,7 @@ const Index = ({
       </StyledContainer>
 
       <StyledContainer width={100}>
-        <Button onPress={() => goToRouter('SignIn')}>{messageButton}</Button>
+        <Button onPress={() => goToRouter('SignIn')}>`${messageButton}`</Button>
       </StyledContainer>
 
       {footer && <Footer goToNextRouter={goToRouter} />}
@@ -61,5 +62,23 @@ const style = StyleSheet.create({
 
   distance: {marginTop: 16},
 });
+
+Index.propTypes = {
+  navigation: PropTypes.func.isRequired,
+  img: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  messageButton: PropTypes.string,
+  footer: PropTypes.boolean,
+};
+
+Index.defaultProps = {
+  navigation: () => {},
+  img: '',
+  title: '',
+  description: '',
+  messageButton: '',
+  footer: false,
+};
 
 export default Index;

@@ -42,3 +42,6 @@ https://dribbble.com/shots/5469009/attachments/5469009-Homepage-Design?mode=medi
     https://www.npmjs.com/package/react-native-rename
   - Alterar Icon do App
     https://www.youtube.com/watch?v=P-b3N8VCKTA
+
+- Build apk test in android
+  https://www.youtube.com/watch?v=HuPK62LHCms&t=620s

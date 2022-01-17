@@ -10,7 +10,6 @@ import MainLogo from 'assets/images/logo-sem-nome.png';
 
 import {Description} from 'components/atoms/Label';
 
-import {readSignInRequest} from '../../store/modules/auth/actions';
 import {useDispatch} from 'react-redux';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -21,8 +20,6 @@ import {COLORS} from '../../constants';
 import * as yup from 'yup';
 
 import {KeyboardAvoidingView, ScrollView} from 'react-native';
-
-import LayoutKeyboardAvoidingView from 'components/atoms/LayoutKeyboardAvoidingView';
 
 const schema = yup
   .object({
@@ -36,8 +33,6 @@ const schema = yup
   .required();
 
 const Index = ({navigation}) => {
-  const dispatch = useDispatch();
-
   const {setValue, handleSubmit, errors, register} = useForm({
     resolver: yupResolver(schema),
   });
@@ -67,7 +62,10 @@ const Index = ({navigation}) => {
       }}
       keyboardVerticalOffset={-210}
       behavior={'padding'}>
-      <ScrollView style={{padding: 10}}>
+      <ScrollView
+        style={{
+          padding: 10,
+        }}>
         <StyledContainer
           width={100}
           style={{
@@ -75,7 +73,7 @@ const Index = ({navigation}) => {
           }}>
           <StyledContainer justify="center" align="center">
             <Image source={MainLogo} />
-            <Text style={styles.text}>Ecolog</Text>
+            <Text style={styles.text}>{`< Ecolog />`}</Text>
             <StyledContainer
               align="center"
               justify="center"

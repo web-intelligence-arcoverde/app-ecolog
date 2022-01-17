@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import Lottie from 'lottie-react-native';
 
-import RecycleAnimation from '../../assets/animations/loading-map.json';
+import RecycleAnimation from '../../../assets/animations/loading-map.json';
 
 const Loading = () => {
   return (

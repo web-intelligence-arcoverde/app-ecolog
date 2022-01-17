@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 
 import {View} from 'react-native';
 
-import EnterpiseRender from './EnterpriseCard/';
-import Map from './Map';
+import EnterpiseRender from 'components/atoms/EnterpriseCard/';
+import Map from 'components/atoms/Map';
 
 import {useSelector} from 'react-redux';
 

@@ -51,8 +51,6 @@ const Index = ({navigation, route}) => {
     navigation.goBack();
   };
 
-  console.log('errors', errors);
-
   return (
     <Container justify="center" align="center">
       <Image source={Logo} style={{position: 'absolute', top: -170, left: 0}} />

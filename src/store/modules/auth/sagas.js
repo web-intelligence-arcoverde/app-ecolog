@@ -14,7 +14,6 @@ export function* signInRequest({user}) {
       email: user.data.email,
       password: user.data.password,
     });
-    console.log(data);
     navigation.navigate('Dashboard');
   } catch (error) {
     console.log(error);

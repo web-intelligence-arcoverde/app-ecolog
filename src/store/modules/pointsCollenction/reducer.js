@@ -1,24 +1,23 @@
 import types from './types';
-
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  companies: [],
+  data: [],
   loading: false,
 };
 
-function user(state = INITIAL_STATE, action) {
+function points(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case types.READ_COMPANIES_REQUEST: {
+    case types.READ_POINTS_COLLECTION_REQUEST: {
       return produce(state, draft => {
         draft.loading = true;
       });
     }
 
-    case types.READ_COMPANIES_SUCCESS: {
+    case types.READ_POINTS_COLLECTION_SUCCESS: {
       return produce(state, draft => {
         draft.loading = false;
-        draft.companies = [...state.companies, action.companies];
+        draft.data = action.points;
       });
     }
 
@@ -27,4 +26,4 @@ function user(state = INITIAL_STATE, action) {
   }
 }
 
-export default user;
+export default points;
