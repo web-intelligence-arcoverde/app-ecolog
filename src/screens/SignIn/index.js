@@ -53,7 +53,6 @@ const Index = ({navigation}) => {
 
   const signInRequest = data => {
     navigation.navigate('Dashboard');
-    //dispatch(readSignInRequest({data, navigation}))
   };
 
   return (
