@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-import {View} from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 
-import EnterpiseRender from 'components/atoms/EnterpriseCard/';
+import CategoriesView from 'components/atoms/ModalCategories/';
 import Map from 'components/atoms/Map';
 
 import {useSelector} from 'react-redux';
@@ -21,7 +21,6 @@ const Index = () => {
   return (
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <Map onChangeCard={setRenderEnterpriseCard} />
-      {openCardEnterprise && <EnterpiseRender />}
     </View>
   );
 };

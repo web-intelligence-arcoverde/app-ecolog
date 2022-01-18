@@ -42,7 +42,7 @@ const Index = ({
       </StyledContainer>
 
       <StyledContainer width={100}>
-        <Button onPress={() => goToRouter('SignIn')}>`${messageButton}`</Button>
+        <Button onPress={() => goToRouter('SignUp')}>{messageButton}</Button>
       </StyledContainer>
 
       {footer && <Footer goToNextRouter={goToRouter} />}

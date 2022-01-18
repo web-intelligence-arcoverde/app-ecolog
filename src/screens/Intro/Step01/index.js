@@ -9,7 +9,7 @@ const Index = ({navigation}) => (
     img={People}
     title="Ajude o meio ambiente"
     description="Incentive seus amigos e vizinhos a descartar o lixo corretamente."
-    messageButton="Pular"
+    messageButton="Registre-se"
     footer
   />
 );

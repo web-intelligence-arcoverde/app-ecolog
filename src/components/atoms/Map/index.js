@@ -17,6 +17,10 @@ const Index = () => {
     dispatch(readPointsCollectionRequest());
   }, []);
 
+  function onMapPress(e) {
+    console.log(e.nativeEvent.coordinate);
+  }
+
   const userLocation = useSelector(state => state.user.location);
   const {data, loading} = useSelector(state => state.points);
 
@@ -28,7 +32,9 @@ const Index = () => {
     <MapView
       ref={mapView}
       style={{flex: 1}}
-      showsUserLocation={true}
+      showsUserLocation
+      showsMyLocationButton={false}
+      onPress={e => onMapPress(e)}
       initialRegion={userLocation}>
       {data.map((point, index) => {
         return <CollectPoint point={point} key={index} />;

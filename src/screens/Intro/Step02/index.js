@@ -10,7 +10,7 @@ const Index = ({navigation}) => (
     title="É fácil"
     description="encontre coletores de recicláveis ​​ou pontos de coleta mais
       próximos de sua casa"
-    messageButton="Pular"
+    messageButton="Registre-se"
     footer
   />
 );

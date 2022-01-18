@@ -9,14 +9,11 @@ import TextButton from 'components/atoms/Button/Text';
 const Index = ({goToNextRouter}) => {
   return (
     <StyledContainer direction="row" justify="center" style={style.distance}>
-      <Label color="silver" style={style.spaceLabels}>
-        Novo por aqui?
-      </Label>
       <TextButton
         color="green"
         weight="bold"
-        onPress={() => goToNextRouter('SignUp')}>
-        Registre-se!
+        onPress={() => goToNextRouter('SignIn')}>
+        Pular
       </TextButton>
     </StyledContainer>
   );

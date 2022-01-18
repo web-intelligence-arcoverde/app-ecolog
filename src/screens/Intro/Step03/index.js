@@ -9,7 +9,8 @@ const Index = ({navigation}) => (
     img={Planet}
     title="Seja consciente"
     description="Ajudar o meio ambiente, catadores e cooperativas cadastradas."
-    messageButton="Vamos lá"
+    messageButton="Registre-se"
+    footer
   />
 );
 

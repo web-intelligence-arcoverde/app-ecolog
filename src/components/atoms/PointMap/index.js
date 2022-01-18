@@ -5,21 +5,29 @@ import {Image} from 'react-native';
 
 import {useDispatch} from 'react-redux';
 import {readEnterprise} from '../../../store/modules/enterprise/actions';
-import Logo from '../../../assets/images/logo-sem-nome.png';
+
+import Person from 'assets/images/person.png';
+import RecyclePoint from 'assets/images/recycling-bin.png';
+import Car from 'assets/images/garbage-truck.png';
+import Enterprise from 'assets/images/recycling-center.png';
+
+const ImagesTypes = {
+  person: Person,
+  point: RecyclePoint,
+  car: Car,
+  enterprise: Enterprise,
+};
 
 const Index = ({point}) => {
   const dispatch = useDispatch();
 
   return (
     <Marker
-      onPress={() => {
-        dispatch(readEnterprise(point));
-      }}
       coordinate={{
         latitude: Number(point.latitude),
         longitude: Number(point.longitude),
       }}>
-      <Image source={Logo} style={{height: 22, width: 22}} />
+      <Image source={ImagesTypes[point.type]} style={{height: 22, width: 22}} />
     </Marker>
   );
 };
