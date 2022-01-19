@@ -29,6 +29,7 @@
     "react-hook-form": "^6.14.0",
     "react-native": "0.65.1",
     "react-native-base64": "^0.2.1",
+    "react-native-confirmation-code-field": "^7.3.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-maps": "^0.29.3",
     "react-native-maps-directions": "^1.8.0",

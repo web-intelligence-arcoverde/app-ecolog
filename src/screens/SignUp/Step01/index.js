@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Image} from 'react-native';
+import React, {useEffect} from 'react';
+import {StyleSheet, Image, KeyboardAvoidingView} from 'react-native';
 
 import {Container, StyledContainer} from 'components/atoms/Container';
 import {Label, Title} from 'components/atoms/Label';
@@ -7,9 +7,8 @@ import Input from 'components/atoms/Input/Default';
 import MaskedInput from 'components/atoms/Input/Masked';
 
 import Button from 'components/atoms/Button/Contained';
-import TextButton from 'components/atoms/Button/Outline';
 
-import Logo from 'assets/images/logo-background-information.png';
+import HeaderButtonBackRoute from 'components/atoms/HeaderButtonBackRoute';
 import MiniLogo from 'assets/images/mini-logo.png';
 
 import {useForm} from 'react-hook-form';
@@ -38,7 +37,10 @@ const Index = ({navigation, route}) => {
   });
 
   const goTo = data => {
-    console.log('aqui');
+    console.log(data);
+    navigation.navigate('SignUp02', {
+      data,
+    });
   };
 
   useEffect(() => {
@@ -52,72 +54,68 @@ const Index = ({navigation, route}) => {
   };
 
   return (
-    <Container justify="center" align="center">
-      <Image source={Logo} style={{position: 'absolute', top: -170, left: 0}} />
-      <StyledContainer direction="column" width={90}>
-        <StyledContainer>
-          <Title size={32} color="green">
-            Insira as informações
-          </Title>
-        </StyledContainer>
-        <StyledContainer style={{marginTop: 12}}>
-          <Label color="silver" size={16}>
-            Insira as informações
-          </Label>
+    <KeyboardAvoidingView style={{flex: 1}}>
+      <Container justify="center" align="center" padding={14}>
+        <HeaderButtonBackRoute backToPreviusScreen={() => goBack()} />
+
+        <StyledContainer direction="column">
+          <StyledContainer>
+            <Title size={26} color="green">
+              Insira as informações
+            </Title>
+          </StyledContainer>
+          <StyledContainer style={style.distance}>
+            <Label color="silver" size={16}>
+              Insira as informações do "type"
+            </Label>
+          </StyledContainer>
+
+          <StyledContainer style={style.distance}>
+            <MaskedInput
+              text="CPF/CNPJ"
+              onChangeText={text => setValue('cpf', text)}
+              error={errors?.cpf}
+              type="cpf"
+            />
+          </StyledContainer>
+
+          <StyledContainer style={style.distance}>
+            <Input
+              text={type !== 'enterprise' ? 'Nome' : 'Nome da empresa'}
+              onChangeText={text => setValue('name', text)}
+              error={errors?.name}
+            />
+          </StyledContainer>
+
+          <StyledContainer>
+            <Input
+              text="Informe seu email"
+              onChangeText={text => setValue('email', text)}
+              error={errors?.email}
+            />
+          </StyledContainer>
+
+          <StyledContainer>
+            <Button onPress={handleSubmit(goTo)}>Prosseguir</Button>
+          </StyledContainer>
         </StyledContainer>
 
-        <StyledContainer style={style.distance}>
-          <MaskedInput
-            text="CPF/CNPJ"
-            onChangeText={text => setValue('cpf', text)}
-            error={errors?.cpf}
-            type="cpf"
-          />
+        <StyledContainer
+          align="center"
+          style={{
+            position: 'absolute',
+            bottom: 10,
+          }}>
+          <Image source={MiniLogo} />
         </StyledContainer>
-
-        <StyledContainer style={style.distance}>
-          <Input
-            style={{marginTop: 10}}
-            text={type !== 'enterprise' ? 'Nome' : 'Nome da empresa'}
-            onChangeText={text => setValue('name', text)}
-            error={errors?.name}
-          />
-        </StyledContainer>
-
-        <StyledContainer style={style.distance}>
-          <Input
-            text="Informe seu email"
-            onChangeText={text => setValue('email', text)}
-            error={errors?.email}
-          />
-        </StyledContainer>
-
-        <StyledContainer>
-          <Button onPress={handleSubmit(goTo)}>Prosseguir</Button>
-        </StyledContainer>
-
-        <StyledContainer style={style.distance}>
-          <TextButton color="green" weight="bold" onPress={() => goBack()}>
-            Voltar
-          </TextButton>
-        </StyledContainer>
-      </StyledContainer>
-
-      <StyledContainer
-        align="center"
-        style={{
-          position: 'absolute',
-          bottom: 10,
-        }}>
-        <Image source={MiniLogo} />
-      </StyledContainer>
-    </Container>
+      </Container>
+    </KeyboardAvoidingView>
   );
 };
 
 const style = StyleSheet.create({
   distance: {
-    marginTop: 22,
+    marginBottom: 22,
   },
 });
 

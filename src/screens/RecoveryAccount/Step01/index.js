@@ -1,15 +1,17 @@
 import React from 'react';
-import {StyleSheet, Image} from 'react-native';
+import {StyleSheet, Image, KeyboardAvoidingView} from 'react-native';
 
 import {Container, StyledContainer} from 'components/atoms/Container';
 import {Label, Title} from 'components/atoms/Label';
 import Input from 'components/atoms/Input/Default';
 import Button from 'components/atoms/Button/Contained';
-import TextButton from 'components/atoms/Button/Outline';
 import OnlyTextButton from 'components/atoms/Button/Text';
 
 import MiniLogo from 'assets/images/mini-logo.png';
-import Logo from 'assets/images/logo-background-information.png';
+
+import Exemple from './Exemple';
+
+import HeaderButtonBackRoute from 'components/atoms/HeaderButtonBackRoute';
 const Index = ({navigation}) => {
   const goTo = name => {
     navigation.navigate(name);
@@ -20,56 +22,59 @@ const Index = ({navigation}) => {
   };
 
   return (
-    <Container justify="center" align="center">
-      <Image source={Logo} style={style.imgTop} />
+    <KeyboardAvoidingView style={{flex: 1}}>
+      <Container justify="center" align="center">
+        <HeaderButtonBackRoute backToPreviusScreen={() => goBack()} />
 
-      <StyledContainer direction="column" width={90}>
-        <StyledContainer>
-          <Title size={32} color="green">
-            Verifique seu email
-          </Title>
-        </StyledContainer>
+        <StyledContainer direction="column" width={90}>
+          <StyledContainer>
+            <Title size={26} color="green">
+              Verifique seu email
+            </Title>
+          </StyledContainer>
 
-        <StyledContainer style={{marginTop: 22}}>
-          <Label color="silver" size={16}>
-            Por favor insira o código de 4 dígitos enviado para o seu email
-          </Label>
-        </StyledContainer>
+          <StyledContainer style={{marginTop: 4}}>
+            <Label color="silver" size={14}>
+              Por favor insira o código de 4 dígitos enviado para o seu email.
+            </Label>
+          </StyledContainer>
 
-        <StyledContainer style={style.distance}>
-          <Input text="Informe o código enviado para seu email" />
-        </StyledContainer>
+          <StyledContainer
+            justify="center"
+            align="center"
+            style={{marginTop: 10}}>
+            <Exemple />
+          </StyledContainer>
 
-        <StyledContainer justify="flex-end" align="flex-end">
-          <StyledContainer style={{marginTop: 6}} width={35}>
+          <StyledContainer
+            justify="flex-end"
+            align="flex-end"
+            style={{marginTop: 6}}>
             <OnlyTextButton color="green" onPress={() => console.log('Lucas')}>
               Reenviar o código
             </OnlyTextButton>
           </StyledContainer>
+
+          <Button
+            onPress={() => goTo('RecoveryAccount02')}
+            disabled={true}
+            background="silver">
+            Verificar código
+          </Button>
         </StyledContainer>
 
-        <Button onPress={() => goTo('RecoveryAccount02')}>
-          Verificar código
-        </Button>
-        <StyledContainer style={style.distance}>
-          <TextButton onPress={() => goBack()} color="green" weight="bold">
-            Voltar
-          </TextButton>
+        <StyledContainer align="center" style={style.imgFooter}>
+          <Image source={MiniLogo} />
         </StyledContainer>
-      </StyledContainer>
-
-      <StyledContainer align="center" style={style.imgFooter}>
-        <Image source={MiniLogo} />
-      </StyledContainer>
-    </Container>
+      </Container>
+    </KeyboardAvoidingView>
   );
 };
 
 const style = StyleSheet.create({
   distance: {
-    marginTop: 22,
+    marginTop: 18,
   },
-  imgTop: {position: 'absolute', top: -60, left: 0},
   imgFooter: {
     position: 'absolute',
     bottom: 10,

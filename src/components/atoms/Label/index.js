@@ -8,9 +8,9 @@ export const Title = styled.Text`
 `;
 
 export const Description = styled.Text`
-  font-size: 16px;
-  text-align: center;
-  color: ${COLORS.silver};
+  font-size: ${({size}) => (size ? size : '16')}px;
+  text-align: ${({align}) => (align ? `${align}` : 'center')};
+  color: ${({color}) => (color ? `${COLORS[color]}` : `${COLORS.silver}`)};
 `;
 
 export const Label = styled.Text`
