@@ -9,21 +9,16 @@ import {
 } from 'react-native-confirmation-code-field';
 
 const styles = StyleSheet.create({
-  root: {
+  codeFieldRoot: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     width: '100%',
-    alignItems: 'center',
   },
 
   cell: {
     width: 48,
     height: 48,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-
+    lineHeight: 42,
     textAlign: 'center',
     backgroundColor: '#f0f0f5',
     borderRadius: 8,

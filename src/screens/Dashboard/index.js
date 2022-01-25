@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import {View, TouchableOpacity, Text} from 'react-native';
 
-import CategoriesView from 'components/atoms/ModalCategories/';
+import PointCard from 'components/atoms/PointCard';
 import Map from 'components/atoms/Map';
 
 import {useSelector} from 'react-redux';
@@ -10,9 +10,7 @@ import {useSelector} from 'react-redux';
 const Index = () => {
   const [open, setOpen] = useState(false);
 
-  const openCardEnterprise = useSelector(
-    state => state.enterprise.visibleInformationCard,
-  );
+  const openCardEnterprise = useSelector(state => state.point.visiblePointCard);
 
   const setRenderEnterpriseCard = () => {
     setOpen(!open);
@@ -20,7 +18,9 @@ const Index = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: '#fff'}}>
-      <Map onChangeCard={setRenderEnterpriseCard} />
+      <Map />
+
+      <PointCard />
     </View>
   );
 };

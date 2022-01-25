@@ -3,6 +3,9 @@ https://www.freepik.com/free-vector/recycle-onboarding-app-screens_6598691.htm
 https://www.instagram.com/p/CRG1OjWLxSe/?utm_medium=copy_link
 https://adobexdelements.com/recycle-mobile-app/
 https://dribbble.com/shots/5469009/attachments/5469009-Homepage-Design?mode=media
+https://br.pinterest.com/pin/33636328456468544/
+https://br.pinterest.com/pin/99360735520925959/
+https://br.pinterest.com/pin/372602569179703557/
 
 - After Effects [Lottie{https://lottiefiles.com/}]
   https://www.youtube.com/watch?v=V3QGW2PgKKY&t=296s
@@ -45,3 +48,6 @@ https://dribbble.com/shots/5469009/attachments/5469009-Homepage-Design?mode=medi
 
 - Build apk test in android
   https://www.youtube.com/watch?v=HuPK62LHCms&t=620s
+
+- Dicas
+  https://www.youtube.com/watch?v=JH5p98hW_OI

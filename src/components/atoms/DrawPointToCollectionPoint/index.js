@@ -1,26 +1,25 @@
 import React, {useEffect} from 'react';
 
 import {COLORS} from '../../../constants/theme';
-const API_KEY = 'AIzaSyBlI63zHzzdgiwU6O00ezQSsAfrJe-jWbs';
+const API_KEY = 'AIzaSyD1oVj3i4gc9ku_H4pHLHI_PbxO9rorCSk';
 
 import MapViewDirections from 'react-native-maps-directions';
 
-import {setDistanceForEnterprise} from '../../../store/modules/user/actions';
 import {useDispatch, useSelector} from 'react-redux';
 
 const Index = () => {
   const userLocation = useSelector(state => state.user.location);
-  const enterprise = useSelector(state => state.enterprise.enterprise);
+  const point = useSelector(state => state.point.point);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!userLocation.latitude || !enterprise.longitude) {
+    if (!point.latitude || !point.longitude) {
       return;
     }
 
     let address = [`${userLocation.latitude},${userLocation.longitude}`];
-    let dest = [`${enterprise.latitude},${enterprise.longitude}`];
+    let dest = [`${point.latitude},${point.longitude}`];
 
     const getTravelTime = async () => {
       fetch(
@@ -28,17 +27,11 @@ const Index = () => {
       )
         .then(res => res.json())
         .then(data => {
-          dispatch(setDistanceForEnterprise(data.rows[0].elements[0]));
+          console.log(data);
         });
     };
     getTravelTime();
-  }, [
-    dispatch,
-    enterprise.latitude,
-    enterprise.longitude,
-    userLocation.latitude,
-    userLocation.longitude,
-  ]);
+  }, [point]);
 
   return (
     <MapViewDirections
@@ -47,8 +40,8 @@ const Index = () => {
         longitude: Number(userLocation.longitude),
       }}
       destination={{
-        latitude: enterprise.latitude,
-        longitude: enterprise.longitude,
+        latitude: Number(point.latitude),
+        longitude: Number(point.longitude),
       }}
       strokeWidth={5}
       strokeColor={COLORS.green}

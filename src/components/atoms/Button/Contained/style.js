@@ -3,8 +3,7 @@ import {COLORS} from '../../../../constants/theme';
 
 export const Button = styled.TouchableOpacity`
   width: 100%;
-  margin-top: 30px;
-  height: 56px;
+  height: 48px;
   background-color: ${props =>
     props.background ? `${COLORS[props.background]}` : `${COLORS.green}`};
   border-radius: 8px;

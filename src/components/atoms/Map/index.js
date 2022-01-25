@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {readPointsCollectionRequest} from '../../../store/modules/pointsCollenction/actions';
 
 import LoadingMap from 'components/atoms/LoadingMap';
-import CollectPoint from 'components/atoms/PointMap';
+import Points from 'components/atoms/Points';
 import DrawLineToPointCollection from 'components/atoms/DrawPointToCollectionPoint';
 
 const Index = () => {
@@ -24,6 +24,8 @@ const Index = () => {
   const userLocation = useSelector(state => state.user.location);
   const {data, loading} = useSelector(state => state.points);
 
+  const {visiblePointCard} = useSelector(state => state.point);
+
   if (loading) {
     return <LoadingMap />;
   }
@@ -37,10 +39,10 @@ const Index = () => {
       onPress={e => onMapPress(e)}
       initialRegion={userLocation}>
       {data.map((point, index) => {
-        return <CollectPoint point={point} key={index} />;
+        return <Points point={point} key={index} />;
       })}
 
-      <DrawLineToPointCollection />
+      {visiblePointCard && <DrawLineToPointCollection />}
     </MapView>
   );
 };
